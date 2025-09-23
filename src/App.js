@@ -7,6 +7,7 @@ import IoTConnectivity from './components/IoTConnectivity';
 import SocialConnect from './components/SocialConnect';
 import EFiling from './components/EFiling';
 import SlideMenu from './components/SlideMenu';
+import RoutingPlan from './components/RoutingPlan';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -67,6 +68,7 @@ function App() {
         <Route path="/iot-connectivity" element={<IoTConnectivity />} />
         <Route path="/social-connect" element={<SocialConnect />} />
         <Route path="/e-filing" element={<EFiling />} />
+        <Route path="/routing-plan" element={<RoutingPlan />} />
       </Routes>
     </Router>
   );

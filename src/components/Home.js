@@ -9,22 +9,26 @@ const Home = () => {
     {
       title: "Routing Plan & Geo-fencing",
       description: "Navigate safely with satellite-powered route planning and geo-fencing to keep you within secure boundaries.",
-      icon: `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='38' fill='%23102040' stroke='%234B9CD3' stroke-width='2'/%3E%3Cpath d='M20,50 Q40,20 60,50' stroke='%234B9CD3' stroke-width='2' fill='none'/%3E%3Ccircle cx='20' cy='50' r='5' fill='%234B9CD3'/%3E%3Ccircle cx='60' cy='50' r='5' fill='%234B9CD3'/%3E%3Cpath d='M30,45 Q40,30 50,45' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2,2'/%3E%3Ccircle cx='40' cy='25' r='3' fill='white'/%3E%3Cpath d='M40,25 L40,15' stroke='white' stroke-width='1' stroke-dasharray='2,2'/%3E%3C/svg%3E`
+      icon: `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='38' fill='%23102040' stroke='%234B9CD3' stroke-width='2'/%3E%3Cpath d='M20,50 Q40,20 60,50' stroke='%234B9CD3' stroke-width='2' fill='none'/%3E%3Ccircle cx='20' cy='50' r='5' fill='%234B9CD3'/%3E%3Ccircle cx='60' cy='50' r='5' fill='%234B9CD3'/%3E%3Cpath d='M30,45 Q40,30 50,45' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2,2'/%3E%3Ccircle cx='40' cy='25' r='3' fill='white'/%3E%3Cpath d='M40,25 L40,15' stroke='white' stroke-width='1' stroke-dasharray='2,2'/%3E%3C/svg%3E`,
+      path: "/routing-plan"
     },
     {
       title: "IoT Device Connectivity",
       description: "Connect with smart devices via satellite networks for enhanced safety monitoring and real-time alerts.",
-      icon: `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='38' fill='%23102040' stroke='%234B9CD3' stroke-width='2'/%3E%3Ccircle cx='40' cy='40' r='8' fill='%234B9CD3'/%3E%3Cpath d='M40,40 L55,25' stroke='white' stroke-width='1'/%3E%3Ccircle cx='55' cy='25' r='4' fill='white'/%3E%3Cpath d='M40,40 L25,25' stroke='white' stroke-width='1'/%3E%3Ccircle cx='25' cy='25' r='4' fill='white'/%3E%3Cpath d='M40,40 L55,55' stroke='white' stroke-width='1'/%3E%3Ccircle cx='55' cy='55' r='4' fill='white'/%3E%3Cpath d='M40,40 L25,55' stroke='white' stroke-width='1'/%3E%3Ccircle cx='25' cy='55' r='4' fill='white'/%3E%3Cpath d='M30,30 Q40,20 50,30' stroke='%234B9CD3' stroke-width='1' fill='none' stroke-dasharray='2,2'/%3E%3Cpath d='M30,50 Q40,60 50,50' stroke='%234B9CD3' stroke-width='1' fill='none' stroke-dasharray='2,2'/%3E%3C/svg%3E`
+      icon: `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='38' fill='%23102040' stroke='%234B9CD3' stroke-width='2'/%3E%3Ccircle cx='40' cy='40' r='8' fill='%234B9CD3'/%3E%3Cpath d='M40,40 L55,25' stroke='white' stroke-width='1'/%3E%3Ccircle cx='55' cy='25' r='4' fill='white'/%3E%3Cpath d='M40,40 L25,25' stroke='white' stroke-width='1'/%3E%3Ccircle cx='25' cy='25' r='4' fill='white'/%3E%3Cpath d='M40,40 L55,55' stroke='white' stroke-width='1'/%3E%3Ccircle cx='55' cy='55' r='4' fill='white'/%3E%3Cpath d='M40,40 L25,55' stroke='white' stroke-width='1'/%3E%3Ccircle cx='25' cy='55' r='4' fill='white'/%3E%3Cpath d='M30,30 Q40,20 50,30' stroke='%234B9CD3' stroke-width='1' fill='none' stroke-dasharray='2,2'/%3E%3Cpath d='M30,50 Q40,60 50,50' stroke='%234B9CD3' stroke-width='1' fill='none' stroke-dasharray='2,2'/%3E%3C/svg%3E`,
+      path: "/iot-connectivity"
     },
     {
       title: "Social Connect",
       description: "Stay connected with your community through satellite-powered communication networks, even in remote areas.",
-      icon: `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='38' fill='%23102040' stroke='%234B9CD3' stroke-width='2'/%3E%3Ccircle cx='30' cy='30' r='6' fill='white'/%3E%3Ccircle cx='50' cy='30' r='6' fill='white'/%3E%3Ccircle cx='40' cy='55' r='6' fill='white'/%3E%3Cpath d='M30,30 L50,30 L40,55 Z' stroke='%234B9CD3' stroke-width='2' fill='none'/%3E%3Cpath d='M40,15 Q50,25 40,35' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2,2'/%3E%3Ccircle cx='40' cy='15' r='3' fill='%234B9CD3'/%3E%3C/svg%3E`
+      icon: `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='38' fill='%23102040' stroke='%234B9CD3' stroke-width='2'/%3E%3Ccircle cx='30' cy='30' r='6' fill='white'/%3E%3Ccircle cx='50' cy='30' r='6' fill='white'/%3E%3Ccircle cx='40' cy='55' r='6' fill='white'/%3E%3Cpath d='M30,30 L50,30 L40,55 Z' stroke='%234B9CD3' stroke-width='2' fill='none'/%3E%3Cpath d='M40,15 Q50,25 40,35' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2,2'/%3E%3Ccircle cx='40' cy='15' r='3' fill='%234B9CD3'/%3E%3C/svg%3E`,
+      path: "/social-connect"
     },
     {
       title: "E-Filing",
       description: "Securely file and transmit documents via encrypted satellite channels for immediate assistance and verification.",
-      icon: `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='38' fill='%23102040' stroke='%234B9CD3' stroke-width='2'/%3E%3Crect x='25' y='30' width='30' height='35' rx='2' fill='white'/%3E%3Cpath d='M30,40 L50,40' stroke='%234B9CD3' stroke-width='2'/%3E%3Cpath d='M30,45 L50,45' stroke='%234B9CD3' stroke-width='2'/%3E%3Cpath d='M30,50 L40,50' stroke='%234B9CD3' stroke-width='2'/%3E%3Cpath d='M40,15 L40,30' stroke='white' stroke-width='1' stroke-dasharray='2,2'/%3E%3Ccircle cx='40' cy='15' r='3' fill='%234B9CD3'/%3E%3Cpath d='M25,25 L35,30' stroke='white' stroke-width='1' stroke-dasharray='2,2'/%3E%3Ccircle cx='25' cy='25' r='2' fill='white'/%3E%3C/svg%3E`
+      icon: `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='38' fill='%23102040' stroke='%234B9CD3' stroke-width='2'/%3E%3Crect x='25' y='30' width='30' height='35' rx='2' fill='white'/%3E%3Cpath d='M30,40 L50,40' stroke='%234B9CD3' stroke-width='2'/%3E%3Cpath d='M30,45 L50,45' stroke='%234B9CD3' stroke-width='2'/%3E%3Cpath d='M30,50 L40,50' stroke='%234B9CD3' stroke-width='2'/%3E%3Cpath d='M40,15 L40,30' stroke='white' stroke-width='1' stroke-dasharray='2,2'/%3E%3Ccircle cx='40' cy='15' r='3' fill='%234B9CD3'/%3E%3Cpath d='M25,25 L35,30' stroke='white' stroke-width='1' stroke-dasharray='2,2'/%3E%3Ccircle cx='25' cy='25' r='2' fill='white'/%3E%3C/svg%3E`,
+      path: "/e-filing"
     }
   ];
 
@@ -186,12 +190,8 @@ const Home = () => {
                 e.currentTarget.style.borderColor = "#1E3A5F";
               }}
               onClick={() => {
-                if (feature.title === "IoT Device Connectivity") {
-                  navigate("/iot-connectivity");
-                } else if (feature.title === "Social Connect") {
-                  navigate("/social-connect");
-                } else if (feature.title === "E-Filing") {
-                  navigate("/e-filing");
+                if (feature.path) {
+                  navigate(feature.path);
                 }
               }}
             >

@@ -19,6 +19,15 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
   // Core Features and Suggested Additions
   const coreFeatures = [
     {
+      title: '🗺️ Routing Plan',
+      subItems: [
+        'Route planning with checkpoints',
+        'Geo-fencing for safety',
+        'SOS alerts for missed checkpoints'
+      ],
+      action: () => navigate('/routing-plan')
+    },
+    {
       title: '👤 Profile',
       subItems: [
         'View/Edit personal info',
