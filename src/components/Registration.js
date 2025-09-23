@@ -793,7 +793,7 @@ const Registration = () => {
         gap: '15px'
       }}>
         <span role="img" aria-label="satellite">🛰️</span>
-        Space Explorer Registration
+        Registration
       </h2>
       
       {/* Step indicator */}
