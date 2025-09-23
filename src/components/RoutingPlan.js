@@ -306,15 +306,27 @@ const RoutingPlan = () => {
             position: 'relative',
             overflow: 'hidden'
           }}>
-            {/* Simulated Map - In a real implementation, this would be a proper map component */}
+            {/* Bhuvan Map iframe */}
+            <iframe 
+              src={`https://bhuvan-app1.nrsc.gov.in/bhuvan2d/bhuvan/bhuvan2d.html?l=73.85,15.50,5z&token=b2946070ae0db8820e7637642d023451250b6c25`}
+              style={{
+                width: '100%',
+                height: '100%',
+                border: 'none',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: 1
+              }}
+              title="Bhuvan Map"
+              allow="geolocation"
+            />
             <div style={{
               width: '100%',
               height: '100%',
               position: 'relative',
-              backgroundColor: '#0A1929',
-              backgroundImage: 'url("https://bhuvan-app1.nrsc.gov.in/bhuvan2d/bhuvan/bhuvan2d.html?l=73.85,15.50,5z")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
+              backgroundColor: 'transparent',
+              zIndex: 2
             }}>
               {/* Current Location Marker */}
               {currentLocation && (

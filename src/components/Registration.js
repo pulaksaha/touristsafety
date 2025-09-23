@@ -624,17 +624,22 @@ const Registration = () => {
             onClick={prevStep}
             style={{ 
               padding: "12px 25px", 
-              backgroundColor: '#607D8B', 
-              color: 'white', 
-              border: 'none', 
+              backgroundColor: 'rgba(10, 25, 41, 0.8)',
+              color: '#4fc3f7',
+              border: '1px solid #4fc3f7',
               borderRadius: 5,
               cursor: 'pointer',
               fontWeight: 'bold',
               fontSize: '16px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+              boxShadow: '0 0 10px rgba(79, 195, 247, 0.3)',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
             }}
           >
-            Previous
+            ◀ Previous
           </button>
         )}
         <div style={{ flex: 1 }}></div>
@@ -644,34 +649,41 @@ const Registration = () => {
             onClick={nextStep}
             style={{ 
               padding: "12px 25px", 
-              backgroundColor: '#2196F3', 
+              background: 'linear-gradient(45deg, #4fc3f7, #2196F3)', 
               color: 'white', 
               border: 'none', 
               borderRadius: 5,
               cursor: 'pointer',
               fontWeight: 'bold',
               fontSize: '16px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+              boxShadow: '0 0 15px rgba(79, 195, 247, 0.5)',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
             }}
           >
-            Next
+            Next ▶
           </button>
         ) : (
           <button 
             type="submit"
             style={{ 
               padding: "12px 25px", 
-              backgroundColor: '#4CAF50', 
+              background: 'linear-gradient(45deg, #4fc3f7, #2196F3)', 
               color: 'white', 
               border: 'none', 
               borderRadius: 5,
               cursor: 'pointer',
               fontWeight: 'bold',
               fontSize: '16px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+              boxShadow: '0 0 15px rgba(79, 195, 247, 0.5)',
+              textTransform: 'uppercase',
+              letterSpacing: '1px'
             }}
           >
-            Submit
+            Launch 🚀
           </button>
         )}
       </div>
@@ -686,17 +698,102 @@ const Registration = () => {
     }
   `;
 
+  // Generate stars for background
+  const generateStars = () => {
+    const stars = [];
+    for (let i = 0; i < 100; i++) {
+      stars.push({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        size: `${Math.random() * 3 + 1}px`,
+        animationDuration: `${Math.random() * 3 + 2}s`
+      });
+    }
+    return stars;
+  };
+
+  const stars = generateStars();
+
   return (
-    <div style={{ maxWidth: 700, margin: "auto", padding: 20 }}>
+    <div style={{ 
+      maxWidth: 800, 
+      margin: '0 auto', 
+      padding: 20,
+      fontFamily: '"Orbitron", sans-serif',
+      position: 'relative',
+      backgroundColor: '#0a1929',
+      color: '#fff',
+      borderRadius: '15px',
+      boxShadow: '0 0 30px rgba(79, 195, 247, 0.3)',
+      overflow: 'hidden',
+      border: '1px solid rgba(79, 195, 247, 0.5)'
+    }}>
+      {/* Stars background */}
+      {stars.map(star => (
+        <div 
+          key={star.id}
+          style={{
+            position: 'absolute',
+            left: star.left,
+            top: star.top,
+            width: star.size,
+            height: star.size,
+            backgroundColor: '#fff',
+            borderRadius: '50%',
+            opacity: Math.random() * 0.7 + 0.3,
+            animation: `twinkle ${star.animationDuration} infinite alternate`,
+            zIndex: 0
+          }}
+        />
+      ))}
+      
+      {/* Orbital rings */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '600px',
+        height: '600px',
+        border: '1px solid rgba(79, 195, 247, 0.1)',
+        borderRadius: '50%',
+        zIndex: 0
+      }} />
+      
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '400px',
+        height: '400px',
+        border: '1px solid rgba(79, 195, 247, 0.15)',
+        borderRadius: '50%',
+        zIndex: 0
+      }} />
+      
+      <div style={{
+        position: 'relative',
+        zIndex: 1
+      }}>
       <style>{styleTag}</style>
       <h2 style={{ 
         textAlign: 'center', 
-        color: '#333', 
-        marginBottom: 10,
-        fontSize: '28px',
-        fontWeight: 'bold'
+        color: '#4fc3f7', 
+        marginBottom: 30,
+        fontSize: '36px',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        letterSpacing: '3px',
+        textShadow: '0 0 10px rgba(79, 195, 247, 0.7), 0 0 20px rgba(79, 195, 247, 0.5)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '15px'
       }}>
-        Tourist Registration
+        <span role="img" aria-label="satellite">🛰️</span>
+        Space Explorer Registration
       </h2>
       
       {/* Step indicator */}
@@ -716,6 +813,7 @@ const Registration = () => {
         {renderStepContent()}
         {renderNavButtons()}
       </form>
+      </div>
     </div>
   );
 };

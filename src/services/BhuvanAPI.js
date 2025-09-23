@@ -2,7 +2,8 @@
 
 class BhuvanAPI {
   constructor(apiKey = "b2946070ae0db8820e7637642d023451250b6c25") {
-    this.apiKey = apiKey;
+    // Update to use the new access token
+    this.apiKey = "b2946070ae0db8820e7637642d023451250b6c25";
     // Use local proxy server instead of direct API calls to avoid CORS issues
     this.baseUrl = "http://localhost:5000/api";
     this.authToken = null;

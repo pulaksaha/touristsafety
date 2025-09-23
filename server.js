@@ -21,32 +21,36 @@ async function authenticateWithBhuvan() {
   try {
     console.log('Attempting to authenticate with Bhuvan API using key:', bhuvanApiKey);
     
-    // For debugging, let's create a mock token since the real API is failing
-    // This is a temporary solution until the real API works
+    try {
+      // Try real authentication first
+      const response = await axios.post('https://bhuvan-app1.nrsc.gov.in/api/auth', {
+        apiKey: bhuvanApiKey
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        timeout: 10000 // 10 second timeout
+      });
+      
+      if (response.status === 200 && response.data && response.data.token) {
+        bhuvanAuthToken = response.data.token;
+        console.log('Successfully authenticated with Bhuvan API');
+        return bhuvanAuthToken;
+      } else {
+        console.error('Failed to authenticate with Bhuvan API:', response.status, response.data);
+        // Fall back to mock token
+      }
+    } catch (apiError) {
+      console.error('Error calling Bhuvan API:', apiError.message);
+      // Fall back to mock token
+    }
+    
+    // Create a mock token as fallback
     bhuvanAuthToken = 'mock_token_' + Date.now();
     console.log('Created mock authentication token for development');
     return bhuvanAuthToken;
-    
-    /* Commented out real authentication that's failing
-    const response = await axios.post('https://bhuvan-app1.nrsc.gov.in/api/auth', {
-      apiKey: bhuvanApiKey
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    
-    if (response.status === 200 && response.data && response.data.token) {
-      bhuvanAuthToken = response.data.token;
-      console.log('Successfully authenticated with Bhuvan API');
-      return bhuvanAuthToken;
-    } else {
-      console.error('Failed to authenticate with Bhuvan API:', response.status, response.data);
-      return null;
-    }
-    */
   } catch (error) {
-    console.error('Error authenticating with Bhuvan API:', error.message);
+    console.error('Error in authentication process:', error.message);
     return null;
   }
 }
@@ -86,7 +90,26 @@ app.post('/api/routing', ensureAuthenticated, async (req, res) => {
   try {
     console.log('Routing request received:', req.body);
     
-    // Generate mock route data for development
+    try {
+      // Try real API call first
+      console.log('Attempting to call Bhuvan routing API with token:', bhuvanAuthToken);
+      const response = await axios.post('https://bhuvan-app1.nrsc.gov.in/api/routing', req.body, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${bhuvanAuthToken}`
+        },
+        timeout: 10000 // 10 second timeout
+      });
+      
+      console.log('Bhuvan routing API response:', response.status);
+      res.json(response.data);
+      return;
+    } catch (apiError) {
+      console.error('Error calling Bhuvan routing API:', apiError.message);
+      // Fall back to mock data
+    }
+    
+    // Generate mock route data as fallback
     const { start, end } = req.body;
     const mockRouteData = {
       route: {
@@ -102,16 +125,6 @@ app.post('/api/routing', ensureAuthenticated, async (req, res) => {
     
     console.log('Returning mock route data');
     res.json(mockRouteData);
-    
-    /* Commented out real API call that's failing
-    const response = await axios.post('https://bhuvan-app1.nrsc.gov.in/api/routing', req.body, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${bhuvanAuthToken}`
-      }
-    });
-    res.json(response.data);
-    */
   } catch (error) {
     console.error('Routing API error:', error.message);
     res.status(500).json({ error: error.message });

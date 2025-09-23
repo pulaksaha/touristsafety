@@ -47,14 +47,15 @@ The current API key being used is:
 b2946070ae0db8820e7637642d023451250b6c25
 ```
 
-This key should be updated when a new valid key is provided by the Bhuvan API team.
+This key is now being used in both the proxy server and directly in the Bhuvan map iframe to ensure proper authentication.
 
 ## Technical Details
 
 ### Modified Files
 
-1. `server.js` - Updated to provide mock data instead of making real API calls
+1. `server.js` - Updated to provide mock data instead of making real API calls, but now tries real API first
 2. `src/services/BhuvanAPI.js` - Enhanced error handling and authentication process
+3. `src/components/RoutingPlan.js` - Updated to include the access token in the Bhuvan map iframe URL
 
 ### Mock Data Structure
 

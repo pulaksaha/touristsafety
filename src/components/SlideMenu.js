@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaUserAstronaut, FaCog, FaCommentDots, FaDoorOpen, FaShieldAlt, FaScroll, FaMapMarkedAlt } from 'react-icons/fa';
 
 const SlideMenu = ({ isOpen, toggleMenu }) => {
   const navigate = useNavigate();
@@ -19,7 +20,8 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
   // Core Features and Suggested Additions
   const coreFeatures = [
     {
-      title: '🗺️ Routing Plan',
+      title: 'Routing Plan',
+      icon: <FaMapMarkedAlt />,
       subItems: [
         'Route planning with checkpoints',
         'Geo-fencing for safety',
@@ -28,7 +30,8 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
       action: () => navigate('/routing-plan')
     },
     {
-      title: '👤 Profile',
+      title: 'Profile',
+      icon: <FaUserAstronaut />,
       subItems: [
         'View/Edit personal info',
         'Upload/Update ID proofs (Passport, Aadhaar, etc.)',
@@ -37,7 +40,8 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
       action: () => navigate('/profile')
     },
     {
-      title: '⚙ Settings',
+      title: 'Settings',
+      icon: <FaCog />,
       subItems: [
         'App preferences (language, theme, notifications)',
         'Privacy & security options',
@@ -46,7 +50,8 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
       action: () => navigate('/settings')
     },
     {
-      title: '💬 Feedback',
+      title: 'Feedback',
+      icon: <FaCommentDots />,
       subItems: [
         'Rate your experience',
         'Report bugs/suggestions'
@@ -54,7 +59,8 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
       action: () => navigate('/feedback')
     },
     {
-      title: '🚪 Logout',
+      title: 'Logout',
+      icon: <FaDoorOpen />,
       subItems: [
         'Safe logout with confirmation'
       ],
@@ -64,7 +70,8 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
 
   const suggestedAdditions = [
     {
-      title: '🛡 Safety Dashboard',
+      title: 'Safety Dashboard',
+      icon: <FaShieldAlt />,
       subItems: [
         'Quick SOS button',
         'FIR Status tracking',
@@ -73,7 +80,8 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
       action: () => navigate('/safety-dashboard')
     },
     {
-      title: '📜 My Reports',
+      title: 'My Reports',
+      icon: <FaScroll />,
       subItems: [
         'View past reports & their statuses',
         'Download FIR copy'
@@ -89,52 +97,116 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
       className="menu-item"
       onClick={item.action}
       style={{
-        padding: '12px 15px',
-        borderBottom: '1px solid rgba(30, 58, 95, 0.5)',
+        padding: '15px',
         cursor: 'pointer',
         transition: 'all 0.3s ease',
-        backgroundColor: 'rgba(10, 25, 41, 0.8)',
-        marginBottom: '8px',
+        background: 'linear-gradient(135deg, rgba(10, 25, 41, 0.9) 0%, rgba(30, 58, 95, 0.7) 100%)',
+        marginBottom: '12px',
         borderRadius: '8px',
-        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
+        boxShadow: '0 0 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(79, 195, 247, 0.2) inset',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        border: '1px solid rgba(79, 195, 247, 0.2)'
       }}
     >
+      {/* Radar scan effect */}
       <div 
+        className="radar-scan"
         style={{
           position: 'absolute',
-          top: '-50%',
-          left: '-50%',
+          top: '50%',
+          left: '50%',
           width: '200%',
           height: '200%',
-          background: 'radial-gradient(circle, rgba(75, 156, 211, 0.1) 0%, rgba(10, 25, 41, 0) 70%)',
-          opacity: 0.5,
+          background: 'conic-gradient(rgba(79, 195, 247, 0.1) 0%, transparent 20%)',
+          transform: 'translate(-50%, -50%)',
           pointerEvents: 'none',
           zIndex: 0,
-          animation: 'pulse 4s infinite'
+          animation: 'radarScan 4s linear infinite'
         }}
       />
-      <h3 style={{ 
-        margin: '0 0 8px 0', 
-        color: '#4B9CD3',
-        fontSize: '16px',
-        fontWeight: 'bold',
-        position: 'relative',
-        zIndex: 1
+      
+      {/* Orbit path */}
+      <div 
+        className="orbit-path"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '0',
+          width: '100%',
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(79, 195, 247, 0.3) 50%, transparent 100%)',
+          opacity: 0.5,
+          pointerEvents: 'none',
+          zIndex: 0
+        }}
+      />
+      
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px',
+        marginBottom: '8px'
       }}>
-        {item.title}
-      </h3>
+        {/* Icon with glow effect */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '36px',
+          height: '36px',
+          borderRadius: '50%',
+          background: 'rgba(10, 25, 41, 0.8)',
+          boxShadow: '0 0 10px rgba(79, 195, 247, 0.5)',
+          border: '1px solid rgba(79, 195, 247, 0.3)',
+          color: '#4fc3f7',
+          fontSize: '18px'
+        }}>
+          {item.icon}
+        </div>
+        
+        <h3 style={{ 
+          margin: 0, 
+          color: '#4fc3f7',
+          fontSize: '16px',
+          fontWeight: 'bold',
+          position: 'relative',
+          zIndex: 1,
+          textShadow: '0 0 5px rgba(79, 195, 247, 0.5)',
+          fontFamily: '"Rajdhani", sans-serif',
+          letterSpacing: '1px',
+          textTransform: 'uppercase'
+        }}>
+          {item.title}
+        </h3>
+      </div>
+      
       <ul style={{ 
         margin: 0, 
-        padding: '0 0 0 20px',
-        fontSize: '14px',
-        color: '#E0E0E0',
+        padding: '0 0 0 48px',
+        fontSize: '13px',
+        color: '#b0bec5',
         position: 'relative',
-        zIndex: 1
+        zIndex: 1,
+        listStyleType: 'none'
       }}>
         {item.subItems.map((subItem, idx) => (
-          <li key={idx} style={{ marginBottom: '4px' }}>{subItem}</li>
+          <li key={idx} style={{ 
+            marginBottom: '6px',
+            position: 'relative'
+          }}>
+            <span style={{
+              position: 'absolute',
+              left: '-15px',
+              top: '6px',
+              width: '5px',
+              height: '5px',
+              borderRadius: '50%',
+              backgroundColor: '#4fc3f7',
+              boxShadow: '0 0 5px rgba(79, 195, 247, 0.7)'
+            }}></span>
+            {subItem}
+          </li>
         ))}
       </ul>
     </div>
@@ -164,45 +236,50 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
         style={{
           position: 'fixed',
           top: 0,
-          right: isOpen ? 0 : '-300px',
-          width: '300px',
+          right: isOpen ? 0 : '-350px',
+          width: '350px',
           height: '100vh',
           backgroundColor: '#0A1929',
-          boxShadow: '-5px 0 15px rgba(0, 0, 0, 0.3)',
-          transition: 'right 0.3s ease-in-out',
+          boxShadow: '-5px 0 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(79, 195, 247, 0.3)',
+          transition: 'right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
           zIndex: 1000,
           overflowY: 'auto',
-          borderLeft: '1px solid #1E3A5F',
-          background: 'linear-gradient(135deg, #102040 0%, #0A1929 100%)'
+          borderLeft: '1px solid rgba(79, 195, 247, 0.3)',
+          background: 'linear-gradient(135deg, #0a1929 0%, #0d2b46 100%)',
+          backgroundImage: 'radial-gradient(circle at 15% 50%, rgba(25, 118, 210, 0.1) 0%, transparent 25%), radial-gradient(circle at 85% 30%, rgba(79, 195, 247, 0.1) 0%, transparent 20%)'
         }}
       >
         {/* Menu Header */}
         <div style={{
           padding: '20px',
-          borderBottom: '1px solid #1E3A5F',
+          borderBottom: '1px solid rgba(79, 195, 247, 0.3)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          background: 'linear-gradient(90deg, rgba(10, 25, 41, 0.9) 0%, rgba(25, 118, 210, 0.2) 100%)'
         }}>
           <h2 style={{ 
-            color: 'white', 
+            color: '#4fc3f7', 
             margin: 0,
             fontSize: '1.5rem',
-            textShadow: '0 2px 10px rgba(75, 156, 211, 0.5)'
+            textShadow: '0 0 10px rgba(79, 195, 247, 0.7)',
+            fontFamily: '"Orbitron", sans-serif',
+            letterSpacing: '2px',
+            textTransform: 'uppercase'
           }}>
-            Menu
+            Command Center
           </h2>
           
           {/* Close button */}
           <button 
             onClick={toggleMenu}
             style={{
-              background: 'none',
-              border: 'none',
-              color: '#4B9CD3',
-              fontSize: '1.5rem',
+              background: 'rgba(10, 25, 41, 0.8)',
+              border: '1px solid rgba(79, 195, 247, 0.5)',
+              color: '#4fc3f7',
+              fontSize: '1.2rem',
               cursor: 'pointer',
               padding: '5px',
               borderRadius: '50%',
@@ -211,59 +288,119 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
               justifyContent: 'center',
               width: '30px',
               height: '30px',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              boxShadow: '0 0 10px rgba(79, 195, 247, 0.3)'
             }}
           >
             ×
           </button>
           
           {/* Satellite animation */}
-          <div style={{
+          <div className="satellite-container" style={{
             position: 'absolute',
-            top: '10px',
-            right: '50px',
-            width: '20px',
-            height: '20px'
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+            opacity: 0.2
           }}>
-            <svg width="20" height="20" viewBox="0 0 20 20">
-              <circle cx="10" cy="10" r="5" fill="#0A1929" stroke="#4B9CD3" strokeWidth="1" />
-              <circle cx="10" cy="10" r="2" fill="#4B9CD3" />
-              <path d="M10,5 L10,2" stroke="#4B9CD3" strokeWidth="0.5" strokeDasharray="1,1" />
-              <path d="M10,15 L10,18" stroke="#4B9CD3" strokeWidth="0.5" strokeDasharray="1,1" />
-              <path d="M5,10 L2,10" stroke="#4B9CD3" strokeWidth="0.5" strokeDasharray="1,1" />
-              <path d="M15,10 L18,10" stroke="#4B9CD3" strokeWidth="0.5" strokeDasharray="1,1" />
-            </svg>
+            {/* Orbit paths */}
+            <div className="orbit" style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '150px',
+              height: '150px',
+              borderRadius: '50%',
+              border: '1px dashed rgba(79, 195, 247, 0.3)',
+              transform: 'translate(-50%, -50%)'
+            }}></div>
+            
+            <div className="orbit" style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '100px',
+              height: '100px',
+              borderRadius: '50%',
+              border: '1px dashed rgba(79, 195, 247, 0.5)',
+              transform: 'translate(-50%, -50%)'
+            }}></div>
+            
+            {/* Satellite */}
+            <div className="satellite" style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '10px',
+              height: '10px',
+              background: '#4fc3f7',
+              borderRadius: '50%',
+              boxShadow: '0 0 10px rgba(79, 195, 247, 0.7)',
+              transform: 'translate(-50%, -50%)',
+              animation: 'orbitAnimation 10s linear infinite'
+            }}></div>
           </div>
         </div>
         
         {/* Core Features */}
-        <div style={{ padding: '15px' }}>
+        <div style={{ padding: '20px' }}>
           <h3 style={{ 
-            color: '#4B9CD3', 
-            fontSize: '18px',
+            color: '#4fc3f7', 
+            fontSize: '16px',
             marginBottom: '15px',
-            borderBottom: '1px solid #1E3A5F',
-            paddingBottom: '5px'
+            borderBottom: '1px solid rgba(79, 195, 247, 0.3)',
+            paddingBottom: '8px',
+            fontFamily: '"Rajdhani", sans-serif',
+            letterSpacing: '1.5px',
+            textTransform: 'uppercase',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
           }}>
-            Core Features
+            <span style={{
+              display: 'inline-block',
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              backgroundColor: '#4fc3f7',
+              boxShadow: '0 0 8px rgba(79, 195, 247, 0.8)'
+            }}></span>
+            Primary Systems
           </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
             {coreFeatures.map(renderMenuItem)}
           </div>
         </div>
 
         {/* Suggested Additions */}
-        <div style={{ padding: '0 15px 15px' }}>
+        <div style={{ padding: '0 20px 20px' }}>
           <h3 style={{ 
-            color: '#4B9CD3', 
-            fontSize: '18px',
+            color: '#4fc3f7', 
+            fontSize: '16px',
             marginBottom: '15px',
-            borderBottom: '1px solid #1E3A5F',
-            paddingBottom: '5px'
+            borderBottom: '1px solid rgba(79, 195, 247, 0.3)',
+            paddingBottom: '8px',
+            fontFamily: '"Rajdhani", sans-serif',
+            letterSpacing: '1.5px',
+            textTransform: 'uppercase',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
           }}>
-            Suggested Additions
+            <span style={{
+              display: 'inline-block',
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              backgroundColor: '#4fc3f7',
+              boxShadow: '0 0 8px rgba(79, 195, 247, 0.8)'
+            }}></span>
+            Auxiliary Systems
           </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
             {suggestedAdditions.map(renderMenuItem)}
           </div>
         </div>
@@ -277,10 +414,31 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
               100% { opacity: 0.3; }
             }
             
+            @keyframes radarScan {
+              0% { transform: translate(-50%, -50%) rotate(0deg); }
+              100% { transform: translate(-50%, -50%) rotate(360deg); }
+            }
+            
+            @keyframes orbitAnimation {
+              0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+              100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+            }
+            
+            @keyframes glowPulse {
+              0% { box-shadow: 0 0 5px rgba(79, 195, 247, 0.3); }
+              50% { box-shadow: 0 0 15px rgba(79, 195, 247, 0.7); }
+              100% { box-shadow: 0 0 5px rgba(79, 195, 247, 0.3); }
+            }
+            
             .menu-item:hover {
-              background-color: rgba(30, 58, 95, 0.8) !important;
+              background: linear-gradient(135deg, rgba(25, 118, 210, 0.4) 0%, rgba(30, 58, 95, 0.7) 100%) !important;
               transform: translateY(-2px);
-              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+              box-shadow: 0 0 20px rgba(79, 195, 247, 0.4), 0 0 10px rgba(79, 195, 247, 0.3) inset !important;
+              border: 1px solid rgba(79, 195, 247, 0.5) !important;
+            }
+            
+            .satellite {
+              animation: orbitAnimation 10s linear infinite;
             }
           `}
         </style>
