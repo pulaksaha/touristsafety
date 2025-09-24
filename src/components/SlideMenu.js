@@ -269,7 +269,7 @@ const SlideMenu = ({ isOpen, toggleMenu }) => {
             letterSpacing: '2px',
             textTransform: 'uppercase'
           }}>
-            Command Center
+            Menu
           </h2>
           
           {/* Close button */}
