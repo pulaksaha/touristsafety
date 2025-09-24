@@ -1,17 +1,26 @@
 // BhuvanAPI.js - Service for Bhuvan API integration
+import EnvironmentConfig from './EnvironmentConfig';
+import MockDataGenerator from './MockDataGenerator';
 
 class BhuvanAPI {
   constructor(apiKey = "b2946070ae0db8820e7637642d023451250b6c25") {
     // Update to use the new access token
     this.apiKey = "b2946070ae0db8820e7637642d023451250b6c25";
     // Use local proxy server instead of direct API calls to avoid CORS issues
-    this.baseUrl = "http://localhost:5000/api";
+    this.baseUrl = EnvironmentConfig.getBaseUrl();
     this.authToken = null;
     console.log('BhuvanAPI initialized with API key:', this.apiKey);
   }
 
   // Authenticate with Bhuvan API
   async authenticate() {
+    // If on GitHub Pages, return mock authentication
+    if (EnvironmentConfig.isGitHubPages()) {
+      console.log('Using mock authentication for GitHub Pages');
+      this.authToken = 'mock_token_' + Date.now();
+      return { success: true, token: this.authToken };
+    }
+    
     try {
       console.log('Authenticating with Bhuvan API via proxy server...');
       console.log('Using API key:', this.apiKey);
@@ -75,6 +84,12 @@ class BhuvanAPI {
 
   // Get route between two points
   async getRoute(startLat, startLng, endLat, endLng) {
+    // If on GitHub Pages, use mock data
+    if (EnvironmentConfig.isGitHubPages()) {
+      console.log('Using mock route data for GitHub Pages');
+      return MockDataGenerator.generateRoute(startLat, startLng, endLat, endLng);
+    }
+    
     try {
       // Make sure we have a valid auth token
       if (!this.authToken) {
@@ -225,6 +240,12 @@ class BhuvanAPI {
 
   // Get nearby landmarks
   async getNearbyLandmarks(latitude, longitude, radius = 1000) {
+    // If on GitHub Pages, use mock data
+    if (EnvironmentConfig.isGitHubPages()) {
+      console.log('Using mock landmarks for GitHub Pages');
+      return MockDataGenerator.generateLandmarks(latitude, longitude, radius);
+    }
+    
     try {
       // Make sure we have a valid auth token
       if (!this.authToken) {
